@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+
+  --color-rotion-50:  #ebeaed;
+  --color-rotion-100: #c1bfc7;
+  --color-rotion-200: #a3a0ac;
+  --color-rotion-300: #797486;
+  --color-rotion-400: #5f596e;
+  --color-rotion-500: #37304a;
+  --color-rotion-600: #322c43;
+  --color-rotion-700: #272235;
+  --color-rotion-800: #1e1a29;
+  --color-rotion-900: #17141f;
+}
+
+@layer components {
+  .region-drag {
+    -webkit-app-region: drag;
+  }
+
+  .region-no-drag {
+    -webkit-app-region: no-drag;
+  }
+}
+
+html {
+  overflow: hidden;
+}
+
+#header {
+  -webkit-app-region: drag;
+}
