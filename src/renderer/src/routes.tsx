@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Router as ElectronRouter } from '../../lib/electron-router-dom';
+import Default from './layout/default';
 import { BlankPage } from './pages/blank-page';
 
 export function AppRoutes() {
@@ -7,7 +8,9 @@ export function AppRoutes() {
     return (
       <BrowserRouter basename="/main">
         <Routes>
-          <Route element={<BlankPage />} path="/" />
+          <Route element={<Default />} path="/">
+            <Route element={<BlankPage />} path="/" />
+          </Route>
         </Routes>
       </BrowserRouter>
     );
