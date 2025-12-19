@@ -15,8 +15,8 @@ function resolveAssetPath(filename: string) {
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1120,
+    height: 700,
     autoHideMenuBar: true,
     backgroundColor: '#17141f',
     titleBarStyle: 'hiddenInset',
