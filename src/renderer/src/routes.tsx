@@ -1,7 +1,17 @@
-import { Route } from 'react-router-dom';
-import { Router } from '../../lib/electron-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Router as ElectronRouter } from '../../lib/electron-router-dom';
 import { BlankPage } from './pages/blank-page';
 
-export function Routes() {
-  return <Router main={<Route element={<BlankPage />} path="/" />} />;
+export function AppRoutes() {
+  if (import.meta.env.DEV) {
+    return (
+      <BrowserRouter basename="/main">
+        <Routes>
+          <Route element={<BlankPage />} path="/" />
+        </Routes>
+      </BrowserRouter>
+    );
+  }
+
+  return <ElectronRouter main={<Route element={<BlankPage />} path="/" />} />;
 }

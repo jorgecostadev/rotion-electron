@@ -2,7 +2,7 @@ import './index.css';
 
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
-import { Routes } from './routes';
+import { AppRoutes } from './routes';
 
 export default function App() {
   return (
@@ -10,7 +10,7 @@ export default function App() {
       <Sidebar />
       <div className="flex flex-col flex-1 max-h-screen">
         <Header />
-        <Routes />
+        <AppRoutes />
       </div>
     </div>
   );

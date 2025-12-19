@@ -1,7 +1,7 @@
 import path, { join } from 'node:path';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import { app, BrowserWindow, ipcMain, shell } from 'electron';
-import { registerRoute } from '../lib/electron-router-dom';
+import { registerRoute, settings } from '../lib/electron-router-dom';
 
 const APP_ICON = resolveAssetPath('icon.png');
 
@@ -49,20 +49,13 @@ function createWindow(): void {
   });
 
   if (is.dev && process.env.ELECTRON_RENDERER_URL) {
-    mainWindow.loadURL(process.env.ELECTRON_RENDERER_URL);
+    const baseUrl = process.env.ELECTRON_RENDERER_URL.replace(/\/$/, '');
+    const urlToLoad = `${baseUrl}/main/`;
+    settings.devServerUrl = urlToLoad;
+    mainWindow.loadURL(urlToLoad);
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'));
   }
-  // if (is.dev && process.env.ELECTRON_RENDERER_URL) {
-  //   // Ensure the renderer is loaded under the router basename (/main)
-  //   // so electron-router-dom's Router (basename="/main") can match the URL.
-  //   const baseUrl = process.env.ELECTRON_RENDERER_URL.replace(/\/$/, '');
-  //   // ensure trailing slash after /main so router basename matching is robust
-  //   console.log('Loading URL:', `${baseUrl}/main/`);
-  //   mainWindow.loadURL(`${baseUrl}/`);
-  // } else {
-  //   mainWindow.loadFile(join(__dirname, '../renderer/index.html'));
-  // }
 }
 
 if (process.platform === 'darwin' && app.dock) {
