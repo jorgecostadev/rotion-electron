@@ -1,3 +1,4 @@
+import { Editor } from '@renderer/components/Editor';
 import { ToC } from '../components/ToC';
 
 export function DocumentPage() {
@@ -15,7 +16,9 @@ export function DocumentPage() {
         </ToC.Root>
       </aside>
 
-      <section className="flex flex-col flex-1 items-center">asfafd</section>
+      <section className="flex flex-col flex-1 items-center">
+        <Editor />
+      </section>
     </main>
   );
 }
